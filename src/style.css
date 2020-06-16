@@ -1,0 +1,150 @@
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: rgb(1, 49, 49);
+    list-style: none;
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
+.header{
+    margin-top: 2rem;
+    border: 1px solid black;
+    padding: 0 1rem;
+}
+input {
+    margin-left: 1 rem;
+}
+.border{
+    border: 1px solid black;
+    padding: 1rem;
+}
+
+.btn {
+    box-sizing: border-box;
+    appearance: none;
+    background-color: rgb(182, 244, 24);
+    border: 2px solid #e74c3c;
+    border-radius: 0.6em;
+    color: #e74c3c;
+    cursor: pointer;
+    display: flex;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 20px;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+.btn:hover, .btn:focus {
+    color: #fff;
+    outline: 0;
+}
+.btnChannel {
+    border-color: #f1c40f;
+    color: #fff;
+    background-image: linear-gradient(45deg, #f1c40f 50%, transparent 50%);
+    background-position: 100%;
+    background-size: 400%;
+    transition: background 300ms ease-in-out;
+}
+.btnChannel:hover {
+    background-position: 0;
+}
+
+/* Cards */
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    grid-gap: 1rem;
+}
+.card{
+    background-color: rgb(242, 243, 220);
+    padding: .5rem;
+    height: auto;
+}
+
+.featured{
+    grid-area: 1 / 1/ auto / 4;
+    height: auto;
+}
+.headlines{
+    grid-area: 1 / 4/ 4 / 5;
+    height: auto;
+}
+.topheadline{
+    margin: 1.2rem 0;
+    font-size: 1.2rem;
+    color: darkslategray;
+    list-style: none;
+    border-bottom: 1px solid black;
+}
+.featureImg{
+    width: 50%;
+    margin-right: 20px;
+}
+.imgResponsive{
+    width: 100%;
+    
+}
+.source{
+    color: rgb(241, 169, 0);
+}
+.left{
+    margin-left: 3rem;
+    color: red;
+}
+.btnreadmore{
+    padding: 1rem 2.5rem;
+    background-color: goldenrod;
+    border-radius: 1rem;
+}
+
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+.stage {
+padding:2rem 0;}
+.readmore {
+  line-height:1em;
+  letter-spacing:0.06em;
+  font-family: 'Lato', sans-serif;
+  font-weight:normal;
+  font-size:16px;
+  text-decoration:none;
+  color:#fff;
+  background:#231f20;
+  display:inline-block;
+  padding:15px 12px 15px 15px;
+  transition:background 200ms;
+  border-radius:4px;
+}
+.readmore:hover {
+  background:#cea052;
+}
+.readmore:after {
+  font-family: 'FontAwesome', sans-serif;
+  font-weight:300;
+  content: "\f105";
+  margin-left:20px;
+  color:#cea052;
+  font-size:18px;
+  vertical-align:middle;
+  transition:color 200ms;
+}
+
+.readmore:hover:after {
+  color:#231f20;
+}
