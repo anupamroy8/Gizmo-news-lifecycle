@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import Channels from "./Channels";
-import Body from "./Body"
+
 
 
 class App extends React.Component {
@@ -17,7 +17,7 @@ class App extends React.Component {
       <>
         <Header/>
         <Channels/>
-        <Body/>
+        
       </>
     );
   }
