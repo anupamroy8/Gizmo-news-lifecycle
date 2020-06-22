@@ -14,13 +14,13 @@ class Body extends React.Component {
   componentDidMount() {
     // console.log("didMount");
     fetch(
-      "https://newsapi.org/v2/top-headlines?country=in&apiKey=d9871a6aba6c4d7c9754bf055f94b3dd"
+      "https://cors-anywhere.herokuapp.com/newsapi.org/v2/top-headlines?country=in&apiKey=d9871a6aba6c4d7c9754bf055f94b3dd"
     )
       .then((res) => res.json())
       .then((data) => this.setState({ topHeadlines: data.articles }))
       .catch((err) => console.log(err));
     fetch(
-      "https://newsapi.org/v2/everything?sources=the-times-of-india&pagesize=60&language=en&apiKey=d9871a6aba6c4d7c9754bf055f94b3dd"
+      "https://cors-anywhere.herokuapp.com/newsapi.org/v2/everything?sources=the-times-of-india&pagesize=60&language=en&apiKey=d9871a6aba6c4d7c9754bf055f94b3dd"
     )
       .then((res) => res.json())
       .then((data) => this.setState({ featured: data.articles }))
