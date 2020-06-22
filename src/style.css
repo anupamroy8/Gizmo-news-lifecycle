@@ -13,12 +13,18 @@ body {
 .flex{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 .header{
     margin-top: 2rem;
     border: 1px solid black;
     padding: 0 1rem;
+    font-size: 1.5rem;
 }
+.header form input, select, button{
+    font-size: 1.5rem;
+}
+
 input {
     margin-left: 1 rem;
 }
@@ -60,6 +66,9 @@ input {
     background-size: 400%;
     transition: background 300ms ease-in-out;
 }
+/* .active {
+    background-color:  #f1c40f;
+} */
 .btnChannel:hover {
     background-position: 0;
 }
@@ -113,6 +122,14 @@ input {
     background-color: goldenrod;
     border-radius: 1rem;
 }
+.author{
+    color: rgba(104, 0, 95, 0.575);
+
+}
+option{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
 
 @import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
 .stage {
@@ -148,3 +165,36 @@ padding:2rem 0;}
 .readmore:hover:after {
   color:#231f20;
 }
+
+/* Loader */
+.lds-hourglass {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-hourglass:after {
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    margin: 8px;
+    box-sizing: border-box;
+    border: 32px solid rgb(47, 103, 131);
+    border-color: rgb(82, 135, 161) transparent rgb(40, 87, 110) transparent;
+    animation: lds-hourglass 1.2s infinite;
+  }
+  @keyframes lds-hourglass {
+    0% {
+      transform: rotate(0);
+      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    50% {
+      transform: rotate(900deg);
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    100% {
+      transform: rotate(1800deg);
+    }
+  }

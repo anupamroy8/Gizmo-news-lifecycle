@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import Channels from "./Channels";
+
 
 
 
@@ -15,9 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Header/>
-        <Channels/>
-        
+        <Header/>        
       </>
     );
   }

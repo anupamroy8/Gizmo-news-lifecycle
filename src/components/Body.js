@@ -7,11 +7,12 @@ class Body extends React.Component {
       featured: null,
       topHeadlines: null,
       topStories: null,
+      abc:null,
     };
   }
 
   componentDidMount() {
-    console.log("didMount");
+    // console.log("didMount");
     fetch(
       "https://newsapi.org/v2/top-headlines?country=in&apiKey=d9871a6aba6c4d7c9754bf055f94b3dd"
     )
@@ -24,35 +25,41 @@ class Body extends React.Component {
       .then((res) => res.json())
       .then((data) => this.setState({ featured: data.articles }))
       .catch((err) => console.log(err));
-    // fetch(
-    //   "https://newsapi.org/v2/everything?sources=cnn&pagesize=60&language=en&apiKey=d9871a6aba6c4d7c9754bf055f94b3dd"
-    // )
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data.articles);
-    //     this.setState({ topStories: data.articles });
-    //   })
-    //   .catch((err) => console.log(err));
+    if(this.props.topnews){
+      console.log(this.props.topnews,"topnews")
+      this.setState({abc: this.shuffle(this.props.topnews)});
+    }
   }
 
-  randomFeature(arr) {
-    return Math.floor(Math.random() * (arr.length - 1));
-  }
-  randomStories(arr) {
-    var abc = Math.floor(Math.random() * (arr.length - 7));
-    console.log(abc);
-    return abc;
-  }
+  shuffle = (array) => {
+    console.log(array,"first")
+    var currentIndex = array.length-1, temporaryValue, randomIndex;
+  
+    while (0 !== currentIndex) {
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+  
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+    console.log(array,"last")
+    return array;
+  } 
+
   render() {
     return (
       <>
         <div className="border grid">
-          
-            {this.state.featured
-              ? this.state.featured
-                  .splice(this.randomFeature(this.state.featured), 1)
+          {/*  */}
+          {/* {console.log(this.props.topnews)} */}
+          {/*  */}
+          {this.state.abc
+              ? this.state.abc
+                  .slice(0, 1)
                   .map((data) => {
                     return(
+                      <>
                     <div className="card featured flex">
                       <img
                         className="featureImg"
@@ -68,21 +75,21 @@ class Body extends React.Component {
                         <h2>
                           {data.title}
                         </h2>
+                        <p className="author">{data.author}</p>
                         <p>
                           {data.content? data.content.slice(0,-14):"..Loading"}
                         </p>
-                        <p>{data.author}</p>
                         <div class="stage">
-                          <a className="readmore" href="{data.url}">
-                            Read More
-                          </a>
+                          
+                        <a className="readmore" href={data.url} target="_blank">Read More</a>
                         </div>
+                        
                       </div>
                     </div>
+                    </>
                     )
                   })
-              : "...Loading"}
-          
+              : <div class="lds-hourglass"></div>}
 
           <div className="card headlines">
             <h2>Top Headlines</h2>
@@ -109,47 +116,14 @@ class Body extends React.Component {
                       </>
                     );
                   })
-                : ""}
+                : <div class="lds-hourglass"></div>}
             </div>
           </div>
 
-          {/* {this.state.topStories
-            ? this.state.topStories
-                .splice(this.randomStories(this.state.topStories), 6)
-                .map((data) => {
-                  return (
-                    <div className="card">
-                      <img
-                        className="imgResponsive"
-                        src={
-                          data.urlToImage !== null
-                            ? data.urlToImage
-                            : "https://us.123rf.com/450wm/pe3check/pe3check1710/pe3check171000054/88673746-stock-vector-no-image-available-sign-internet-web-icon-to-indicate-the-absence-of-image-until-it-will-be-download.jpg?ver=6]"
-                        }
-                        alt={data.title}
-                      />
-                      <div>
-                        <div className="flex">
-                          <span className="source">{data.source.name}</span>
-                          <span className="left">
-                            {new Date(data.publishedAt).toDateString().slice(4)}
-                          </span>
-                        </div>
 
-                        <h3>{data.description}</h3>
-                        <p>{data.author}</p>
-                        <a href={data.url} target="_blank">
-                          Read more..
-                        </a>
-                      </div>
-                    </div>
-                  );
-                })
-            : ""} */}
-
-          {this.props.topnews
-            ? this.props.topnews
-                .splice(this.randomStories(this.props.topnews), 6)
+          {this.state.abc
+            ? this.state.abc
+                .slice(1, 7)
                 .map((data) => {
                   return (
                     <div className="card">
@@ -169,9 +143,10 @@ class Body extends React.Component {
                             {new Date(data.publishedAt).toDateString().slice(4)}
                           </span>
                         </div>
-
+                        <p className="author">{data.author}</p>
                         <h3>{data.description}</h3>
-                        <p>{data.author}</p>
+                        
+                        
                         <a href={data.url} target="_blank">
                           Read more..
                         </a>
@@ -179,7 +154,7 @@ class Body extends React.Component {
                     </div>
                   );
                 })
-            : ""}
+            : <div class="lds-hourglass"></div>}
         </div>
       </>
     );
